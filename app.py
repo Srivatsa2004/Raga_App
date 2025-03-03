@@ -1,6 +1,7 @@
 import streamlit as st
 import my_funcs as mf
 from collections import OrderedDict
+import pandas as pd
 # Pip install necessary packages before running the script
 import subprocess
 subprocess.run(['pip', 'install', '--upgrade', 'noisereduce'])

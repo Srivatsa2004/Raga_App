@@ -1,14 +1,14 @@
+# my_funcs.py
 import librosa
 import numpy as np
 import matplotlib.pyplot as plt
-import noisereduce as nr
 import re
 import pandas as pd
-import scipy.signal as signal
 from collections import OrderedDict
 
 def load_audio(file_path):
-    return librosa.load(file_path)
+    y, sr = librosa.load(file_path)
+    return y, sr
 
 def apply_noise_cancellation(y, thresh=0.00):
     return np.where(np.abs(y) < thresh, 0, y)
@@ -26,7 +26,7 @@ def plot_waveform(y, sr, onset_times):
     plt.ylabel("Amplitude")
     plt.title("Onset Detection in waveform")
     plt.legend()
-    plt.show()
+    return plt # Important: return the plot object
 
 def compute_stft(y, sr, n_fft=2048, hop_length=512):
     stft = librosa.stft(y, n_fft=n_fft, hop_length=hop_length)
@@ -44,7 +44,6 @@ def extract_onset_frequencies(stft, frequencies, onset_detect):
 
 def match_swaras(onset_frequencies, shruthis):
     match_swara = []
-    best_match_swara = None
     for shruthi_name, shruthi_frequencies in shruthis.items():
         for frequency in onset_frequencies:
             closest_shruthi_frequency = min(shruthi_frequencies, key=lambda x: abs(frequency - x))
@@ -53,27 +52,37 @@ def match_swaras(onset_frequencies, shruthis):
                 match_swara.append(best_match_swara)
     return match_swara
 
-def shift_swaras(input_shruthi, shruthis, carnatic_swaras):
+def shift_swaras(input_shruthi, shruthis): #removed carnatic_swaras, as not needed.
     shruthi_names = [shruthi_name[0] for shruthi_name in shruthis.keys()]
-    start_index = shruthi_names.index(input_shruthi)
+    try:
+        start_index = shruthi_names.index(input_shruthi)
+    except ValueError:
+        return None # Return None if input is invalid.
     shifted_shruthis = {}
+    carnatic_swaras = ['S', 'R1', 'G1', 'G2', 'G3', 'M1', 'M2', 'P', 'D1', 'N1', 'N2', 'N3']
     for i in range(len(shruthi_names)):
         swara_index = (i - start_index) % len(carnatic_swaras)
         shifted_shruthis[shruthi_names[i]] = carnatic_swaras[swara_index]
     return shifted_shruthis
 
+def get_swaras_from_frequencies(onset_frequencies, shruthis, shifted_shruthis):
+    """Gets swaras from onset frequencies using shruthis and shifted_shruthis."""
+    swaras = []
+    for frequency in onset_frequencies:
+        for (shruthi_name_key, shruthi_name_val), shruthi_frequencies in shruthis.items():
+            closest_shruthi_frequency = min(shruthi_frequencies, key=lambda x: abs(frequency - x))
+            if abs(frequency - closest_shruthi_frequency) <= 6:
+                swaras.append(shifted_shruthis[shruthi_name_key])
+                break #prevent double matching
+    return swaras
+
 def map_swaras(swaras):
-    '''swaras_replace = []
-    for swara in swaras:
-        swara_in_mapping = next((k for k in swara_map if swara.startswith(k)), swara)
-        swaras_replace.append(swara_map.get(swara_in_mapping, swara))
-    return swaras_replace'''
     swara_map = OrderedDict([
         ("R1", "R1"), ("R2", "G1"), ("R3", "G2"), ("G1", "G1"), ("G2", "G2"), ("G3", "G3"),
         ("Sa", "S"), ("Ma1", "M1"), ("Ma2", "M2"), ("Pa", "P"), ("Da1", "D1"), ("Da2", "N1"),
         ("Da3", "N2"), ("N1", "N1"), ("N2", "N2"), ("Ni3", "N3"), ("D3", "N2")
     ])
-    
+
     swaras_replace = []
     for swara in swaras:
         if 'R1' in swaras:
@@ -90,19 +99,8 @@ def map_swaras(swaras):
     return swaras_replace
 
 def order_swaras(swaras_replace, desired_order):
-    ordered_swaras = [swara for swara in desired_order if swara in swaras_replace]
-    print(ordered_swaras)
+    ordered_swaras = list(OrderedDict.fromkeys([swara for desired_swara in desired_order for swara in swaras_replace if desired_swara in swara]))
     return ordered_swaras
-    #ordered_swaras = []
-   # for desired_swara in desired_order:
-       # matching_swaras = [swara for swara in swaras_replace if desired_swara in swara and swara not in ordered_swaras]
-        #ordered_swaras.extend(matching_swaras)
-   # return list(OrderedDict.fromkeys(ordered_swaras))
-
-def read_excel_file(file_path):
-    # Read the Excel file
-    df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
-    return df
 
 def find_ragas(df, ordered_swaras):
     ordered_swaras = map_swaras(ordered_swaras)
@@ -112,4 +110,3 @@ def find_ragas(df, ordered_swaras):
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             print(f"Raaga: {df.loc[index, 'Raagas']} contains the swaras {', '.join(ordered_swaras)}")
-            

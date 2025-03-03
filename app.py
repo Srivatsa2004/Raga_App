@@ -25,7 +25,7 @@ stft, frequencies = mf.compute_stft(y, sr)
 
 # Extract onset frequencies
 onset_frequencies = mf.extract_onset_frequencies(stft, frequencies, onset_detect)
-st.write(f"Filtered Onset Frequencies (Hz): {onset_frequencies}")
+#st.write(f"Filtered Onset Frequencies (Hz): {onset_frequencies}")
 
 # Define shruthis
 shruthis = {
@@ -38,7 +38,7 @@ shruthis = {
 }
 
 match_swara = mf.match_swaras(onset_frequencies, shruthis)
-st.write(f"Swaras associated are: {match_swara}")
+#st.write(f"Swaras associated are: {match_swara}")
 
 # Input shruthi
 input_shruthi = st.text_input("Enter the shruthi:", "C")

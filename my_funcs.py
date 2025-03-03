@@ -62,17 +62,37 @@ def shift_swaras(input_shruthi, shruthis, carnatic_swaras):
         shifted_shruthis[shruthi_names[i]] = carnatic_swaras[swara_index]
     return shifted_shruthis
 
-def map_swaras(swaras, swara_map):
-    swaras_replace = []
+def map_swaras(swaras):
+    '''swaras_replace = []
     for swara in swaras:
         swara_in_mapping = next((k for k in swara_map if swara.startswith(k)), swara)
         swaras_replace.append(swara_map.get(swara_in_mapping, swara))
+    return swaras_replace'''
+    swara_map = OrderedDict([
+        ("R1", "R1"), ("R2", "G1"), ("R3", "G2"), ("G1", "G1"), ("G2", "G2"), ("G3", "G3"),
+        ("Sa", "S"), ("Ma1", "M1"), ("Ma2", "M2"), ("Pa", "P"), ("Da1", "D1"), ("Da2", "N1"),
+        ("Da3", "N2"), ("N1", "N1"), ("N2", "N2"), ("Ni3", "N3"), ("D3", "N2")
+    ])
+    
+    swaras_replace = []
+    for swara in swaras:
+        if 'R1' in swaras:
+            swara_in_mapping = next((k for k in swara_map if swara.startswith(k)), swara)
+            swaras_replace.append(swara_map.get(swara_in_mapping, swara))
+        elif 'R2' in swaras and swara == "R3":
+            swaras_replace.append('G2')
+        elif 'D1' in swaras and swara == "D2":
+            swaras_replace.append('N1')
+        elif 'D2' in swaras and swara == "D3":
+            swaras_replace.append('N2')
+        else:
+            swaras_replace.append(swara)
     return swaras_replace
 
-def order_swaras(swaras, desired_order):
+def order_swaras(swaras_replace, desired_order):
     ordered_swaras = []
     for desired_swara in desired_order:
-        matching_swaras = [swara for swara in swaras if desired_swara in swara and swara not in ordered_swaras]
+        matching_swaras = [swara for swara in swara_replace if desired_swara in swara and swara not in ordered_swaras]
         ordered_swaras.extend(matching_swaras)
     return list(OrderedDict.fromkeys(ordered_swaras))
 
@@ -82,6 +102,7 @@ def read_excel_file(file_path):
     return df
 
 def find_ragas(df, ordered_swaras):
+    ordered_swaras = map_swara(ordered_swaras)
     ordered_swaras_set = set(ordered_swaras)
     for index, value in df['Swaras'].items():
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)

@@ -41,7 +41,7 @@ match_swara = mf.match_swaras(onset_frequencies, shruthis)
 #st.write(f"Swaras associated are: {match_swara}")
 
 # Input shruthi
-input_shruthi = st.text_input("Enter the shruthi:", "C")
+input_shruthi = st.text_input("Enter the shruthi:")
 shifted_shruthis = mf.shift_swaras(input_shruthi, shruthis, ['S', 'R1', 'R2' or 'G1', 'R3' or' G2', 'G3', 'M1', 'M2', 'P', 'D1', 'D2' or 'N1', 'D3' or 'N2', 'N3'])
 
 swaras = mf.map_swaras(match_swara, OrderedDict([

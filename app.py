@@ -53,7 +53,7 @@ swaras = mf.map_swaras( OrderedDict([
 
 #ordered_swaras = mf.order_swaras(swaras_replace, ['S','R', 'G', 'M', 'P', 'D', 'N'])
 #st.write(f"Shifted swaras are: {swaras}")
-st.write(f"Ordered swaras: {ordered_swaras}")
+#st.write(f"Ordered swaras: {ordered_swaras}")
 
 # Find matching ragas
 file_path = "Shruthi & Ragas - Raagas with names.csv"

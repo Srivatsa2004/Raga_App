@@ -9,10 +9,10 @@ subprocess.run(['pip', 'install', 'numba', '--force-reinstall'])
 subprocess.run(['pip', 'install', '--upgrade', 'librosa'])
 
 # Use your functions
-st.title("My Colab Code App")
+st.title("My Raga Detection App")
 
 # Load and process audio
-y, sr = mf.load_audio("/content/Dhenuka.opus")
+y, sr = mf.load_audio("Dhenuka.opus")
 y_clean = mf.apply_noise_cancellation(y)
 onset_detect, onset_times = mf.detect_onsets(y_clean, sr)
 

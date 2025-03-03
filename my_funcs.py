@@ -91,6 +91,7 @@ def map_swaras(swaras):
 
 def order_swaras(swaras_replace, desired_order):
     ordered_swaras = [swara for swara in desired_order if swara in swaras_replace]
+    print(ordered_swaras)
     return ordered_swaras
     #ordered_swaras = []
    # for desired_swara in desired_order:

@@ -1,5 +1,5 @@
 import streamlit as st
-import myfuncs as mf
+import my_funcs as mf
 
 # Pip install necessary packages before running the script
 import subprocess

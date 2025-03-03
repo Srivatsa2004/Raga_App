@@ -76,6 +76,11 @@ def order_swaras(swaras, desired_order):
         ordered_swaras.extend(matching_swaras)
     return list(OrderedDict.fromkeys(ordered_swaras))
 
+def read_excel_file(file_path):
+    # Read the Excel file
+    df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
+    return df
+
 def find_ragas(df, ordered_swaras):
     ordered_swaras_set = set(ordered_swaras)
     for index, value in df['Swaras'].items():
@@ -84,7 +89,3 @@ def find_ragas(df, ordered_swaras):
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             print(f"Raaga: {df.loc[index, 'Raagas']} contains the swaras {', '.join(ordered_swaras)}")
             
-def read_excel_file(file_path):
-    # Read the Excel file
-    df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
-    return df

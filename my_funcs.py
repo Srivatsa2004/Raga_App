@@ -104,7 +104,7 @@ def read_excel_file(file_path):
     return df
 
 def find_ragas(df, ordered_swaras):
-    ordered_swaras = map_swara(ordered_swaras)
+    ordered_swaras = map_swaras(ordered_swaras)
     ordered_swaras_set = set(ordered_swaras)
     for index, value in df['Swaras'].items():
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)

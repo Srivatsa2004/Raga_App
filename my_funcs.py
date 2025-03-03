@@ -92,7 +92,7 @@ def map_swaras(swaras):
 def order_swaras(swaras_replace, desired_order):
     ordered_swaras = []
     for desired_swara in desired_order:
-        matching_swaras = [swara for swara in swara_replace if desired_swara in swara and swara not in ordered_swaras]
+        matching_swaras = [swara for swara in swaras_replace if desired_swara in swara and swara not in ordered_swaras]
         ordered_swaras.extend(matching_swaras)
     return list(OrderedDict.fromkeys(ordered_swaras))
 

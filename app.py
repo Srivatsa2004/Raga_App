@@ -52,7 +52,7 @@ swaras = mf.map_swaras(match_swara, OrderedDict([
 ]))
 
 ordered_swaras = mf.order_swaras(swaras, ['S','R', 'G', 'M', 'P', 'D', 'N'])
-st.write(f"Shifted swaras are: {swaras}")
+#st.write(f"Shifted swaras are: {swaras}")
 st.write(f"Ordered swaras: {ordered_swaras}")
 
 # Find matching ragas

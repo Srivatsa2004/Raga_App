@@ -57,5 +57,5 @@ st.write(f"Ordered swaras: {ordered_swaras}")
 
 # Find matching ragas
 file_path = "Shruthi & Ragas - Raagas with names.csv"
-df = pd.read_csv("file_path")
+df = pd.read_csv(file_path)
 mf.find_ragas(df, ordered_swaras)

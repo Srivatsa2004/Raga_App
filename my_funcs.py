@@ -111,4 +111,4 @@ def find_ragas(df, ordered_swaras):
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             #print(f"Raaga: {df.loc[index, 'Raagas']} contains the swaras {', '.join(ordered_swaras)}")
             results.append(df.loc[index, 'Raagas'])
-            return results
+        return results

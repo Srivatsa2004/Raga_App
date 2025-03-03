@@ -58,5 +58,13 @@ else:
     # Find matching ragas
     file_path = "Shruthi & Ragas - Raagas with names.csv"
     df = pd.read_csv(file_path)
+    raga_results = mf.find_ragas(df, ordered_swaras) #store the result in raga_results
 
-    mf.find_ragas(df, ordered_swaras)
+    if raga_results: # if result is not empty
+        st.write("Detected Ragas:")
+        for raga in raga_results:
+            st.write(raga)
+    else:
+        st.write("No matching ragas found.")
+
+    #mf.find_ragas(df, ordered_swaras)

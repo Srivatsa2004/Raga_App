@@ -12,7 +12,7 @@ if uploaded_file is not None:
 
     y, sr = load_audio("temp.opus")
     y_clean = apply_noise_cancellation(y)
-    onset_detect, onset_times = detect_onsets(y_clean, sr)
+    onset_detect, onset_times = detect_onsets(y_clean, sr,thresh)
     onset_frequencies = get_onset_frequencies(y_clean, sr, onset_detect)
 
     shruthis = {

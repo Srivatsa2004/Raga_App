@@ -9,9 +9,9 @@ from collections import OrderedDict
 def load_audio(file_path):
     y, sr = librosa.load(file_path)
     return y, sr
-
+    
+thresh= 0.02
 def apply_noise_cancellation(y, thresh):
-    thresh=0.02
     return np.where(np.abs(y) < thresh, 0, y)
 
 def detect_onsets(y, sr):

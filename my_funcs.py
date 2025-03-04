@@ -10,8 +10,8 @@ def load_audio(file_path):
     y, sr = librosa.load(file_path)
     return y, sr
 
-def apply_noise_cancellation(y, thresh=0.02):
-    return np.where(np.abs(y) < thresh, 0, y)
+def apply_noise_cancellation(y, thresh):
+    return np.where(np.abs(y) < thresh=0.02, 0, y)
 
 def detect_onsets(y, sr):
     onset_detect = librosa.onset.onset_detect(y=y, sr=sr)

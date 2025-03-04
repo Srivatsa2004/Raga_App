@@ -16,7 +16,7 @@ def apply_noise_cancellation(y, thresh):
 
 def detect_onsets(y, sr,thresh=0.02):
     y_clean = apply_noise_cancellation(y, thresh)
-    onset_detect = librosa.onset.onset_detect(y=y,sr=sr)
+    onset_detect = librosa.onset.onset_detect(y=y_clean,sr=sr)
     onset_times = librosa.frames_to_time(onset_detect, sr=sr)
     return onset_detect, onset_times
 

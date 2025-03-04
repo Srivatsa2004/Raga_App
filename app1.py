@@ -23,4 +23,9 @@ if uploaded_file is not None:
     ('G#', "D1"): [415.3, 830.61, 1661], ('A', "D2/N1"): [440, 880, 1760],
     ('A#', "D3/N2"): [466.16, 932.68, 1864], ('B', "N3"): [246.94, 493.88, 987.77, 1975.5]
     }
+    plot = plot_onsets(y_clean, sr, onset_times)
+    st.pyplot(plot) #add this line
+    st.write("Onset Frequencies:", onset_frequencies)
+    st.write("Shifted Swaras:", unique_swaras)
+    st.write("Possible Ragas:", matched_ragas)
      

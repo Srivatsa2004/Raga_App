@@ -23,9 +23,20 @@ if uploaded_file is not None:
     ('G#', "D1"): [415.3, 830.61, 1661], ('A', "D2/N1"): [440, 880, 1760],
     ('A#', "D3/N2"): [466.16, 932.68, 1864], ('B', "N3"): [246.94, 493.88, 987.77, 1975.5]
     }
+    input_shruthi = st.text_input("Enter the shruthi (e.g., C, C#, D):")
+    if input_shruthi:
+        unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
+
+        if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
+            st.write(unique_swaras) #display the error message
+        else:
+            df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
+            matched_ragas = find_raga(unique_swaras, df)
+            
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
     st.write("Onset Frequencies:", onset_frequencies)
     st.write("Shifted Swaras:", unique_swaras)
     st.write("Possible Ragas:", matched_ragas)
-     
+else:
+    st.write("Please enter a shruthi")

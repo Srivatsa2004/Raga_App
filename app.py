@@ -7,7 +7,7 @@ from collections import OrderedDict
 st.title("My Raga Detection App")
 
 # Load and process audio
-y, sr = mf.load_audio("Kalyani.opus")
+y, sr = mf.load_audio("Kalyani 1.opus")
 y_clean = mf.apply_noise_cancellation(y)
 onset_detect, onset_times = mf.detect_onsets(y_clean, sr)
 

@@ -10,7 +10,7 @@ st.title("My Raga Detection App")
 y, sr = mf.load_audio("Kalyani2.opus")
 thresh=0.02
 y_clean = mf.apply_noise_cancellation(y,thresh)
-onset_detect, onset_times = mf.detect_onsets(y=y_clean, sr)
+onset_detect, onset_times = mf.detect_onsets(y=y_clean, sr=sr)
 
 # Plot waveform
 st.pyplot(mf.plot_waveform(y, sr, onset_times)) #st.pyplot() is used here.

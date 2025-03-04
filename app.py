@@ -7,8 +7,8 @@ from collections import OrderedDict
 st.title("My Raga Detection App")
 
 # Load and process audio
-y, sr = mf.load_audio("Dhenuka.opus")
-y_clean = mf.apply_noise_cancellation(y)
+y, sr = mf.load_audio("Kalyani2.opus")
+y_clean = mf.apply_noise_cancellation(y,thresh)
 onset_detect, onset_times = mf.detect_onsets(y_clean, sr)
 
 # Plot waveform

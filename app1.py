@@ -35,7 +35,7 @@ if uploaded_file is not None:
             
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
-    st.write("Onset Frequencies:", onset_frequencies)
+    #st.write("Onset Frequencies:", onset_frequencies)
     st.write("Shifted Swaras:", unique_swaras)
     st.write("Possible Ragas:", matched_ragas)
 else:

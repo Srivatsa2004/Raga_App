@@ -30,20 +30,7 @@ def plot_waveform(y, sr, onset_times):
     plt.title("Onset Detection in waveform")
     plt.legend()
     return plt # Important: return the plot object
-
-def get_onset_frequencies(y, sr, onset_detect):
-    n_fft = 2048
-    hop_length = 512
-    stft = librosa.stft(y, n_fft=n_fft, hop_length=hop_length)
-    frequencies = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
-    onset_frequencies = []
-    for i in onset_detect:
-        magnitude_spectrum = np.abs(stft[:, i])
-        max_bin = np.argmax(magnitude_spectrum)
-        onset_frequency = frequencies[max_bin]
-        onset_frequencies.append(onset_frequency)
-    return onset_frequencies
-    '''
+    
 def compute_stft(y_clean, sr, n_fft=2048, hop_length=512):
     stft = librosa.stft(y_clean, n_fft=n_fft, hop_length=hop_length)
     frequencies = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
@@ -56,7 +43,7 @@ def extract_onset_frequencies(stft, frequencies, onset_detect):
         max_bin = np.argmax(magnitude_spectrum)
         onset_frequency = frequencies[max_bin]
         onset_frequencies.append(onset_frequency)
-    return onset_frequencies'''
+    return onset_frequencies
 
 def match_swaras(onset_frequencies, shruthis):
     match_swara = []

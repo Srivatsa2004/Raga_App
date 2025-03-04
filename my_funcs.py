@@ -13,12 +13,13 @@ def load_audio(file_path):
 
 def apply_noise_cancellation(y, thresh=0.02):
     return np.where(np.abs(y) < thresh, 0, y)
-
+    
 def detect_onsets(y_clean, sr,thresh=0.02):
     #y_clean = apply_noise_cancellation(y, thresh)
     onset_detect = librosa.onset.onset_detect(y=y_clean,sr=sr)
     onset_times = librosa.frames_to_time(onset_detect, sr=sr)
     return onset_detect, onset_times
+
 
 def plot_waveform(y, sr, onset_times):
     plt.figure(figsize=(40, 4))
@@ -30,6 +31,19 @@ def plot_waveform(y, sr, onset_times):
     plt.legend()
     return plt # Important: return the plot object
 
+def get_onset_frequencies(y, sr, onset_detect):
+    n_fft = 2048
+    hop_length = 512
+    stft = librosa.stft(y, n_fft=n_fft, hop_length=hop_length)
+    frequencies = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
+    onset_frequencies = []
+    for i in onset_detect:
+        magnitude_spectrum = np.abs(stft[:, i])
+        max_bin = np.argmax(magnitude_spectrum)
+        onset_frequency = frequencies[max_bin]
+        onset_frequencies.append(onset_frequency)
+    return onset_frequencies
+    '''
 def compute_stft(y_clean, sr, n_fft=2048, hop_length=512):
     stft = librosa.stft(y_clean, n_fft=n_fft, hop_length=hop_length)
     frequencies = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
@@ -42,7 +56,7 @@ def extract_onset_frequencies(stft, frequencies, onset_detect):
         max_bin = np.argmax(magnitude_spectrum)
         onset_frequency = frequencies[max_bin]
         onset_frequencies.append(onset_frequency)
-    return onset_frequencies
+    return onset_frequencies'''
 
 def match_swaras(onset_frequencies, shruthis):
     match_swara = []
@@ -67,16 +81,6 @@ def shift_swaras(input_shruthi, shruthis): #removed carnatic_swaras, as not need
         shifted_shruthis[shruthi_names[i]] = carnatic_swaras[swara_index]
     return shifted_shruthis
 
-def get_swaras_from_frequencies(onset_frequencies, shruthis, shifted_shruthis):
-    """Gets swaras from onset frequencies using shruthis and shifted_shruthis."""
-    swaras = []
-    for frequency in onset_frequencies:
-        for (shruthi_name_key, shruthi_name_val), shruthi_frequencies in shruthis.items():
-            closest_shruthi_frequency = min(shruthi_frequencies, key=lambda x: abs(frequency - x))
-            if abs(frequency - closest_shruthi_frequency) <= 6:
-                swaras.append(shifted_shruthis[shruthi_name_key])
-                break #prevent double matching
-    return swaras
 
 def map_swaras(swaras):
     swara_map = OrderedDict([

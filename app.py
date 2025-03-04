@@ -8,6 +8,7 @@ st.title("My Raga Detection App")
 
 # Load and process audio
 y, sr = mf.load_audio("Kalyani2.opus")
+thresh=0.02
 y_clean = mf.apply_noise_cancellation(y,thresh)
 onset_detect, onset_times = mf.detect_onsets(y_clean, sr)
 

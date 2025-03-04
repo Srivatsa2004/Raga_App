@@ -8,15 +8,15 @@ st.title("My Raga Detection App")
 
 # Load and process audio
 y, sr = mf.load_audio("Kalyani2.opus")
-thresh=0.02
-y_clean = mf.apply_noise_cancellation(y,thresh)
+
+y_clean = mf.apply_noise_cancellation(y)
 onset_detect, onset_times = mf.detect_onsets(y_clean,sr)
 
 # Plot waveform
 st.pyplot(mf.plot_waveform(y, sr, onset_times)) #st.pyplot() is used here.
 
 # Compute STFT
-stft, frequencies = mf.compute_stft(y, sr)
+stft, frequencies = mf.compute_stft(y_clean, sr)
 
 # Extract onset frequencies
 onset_frequencies = mf.extract_onset_frequencies(stft, frequencies, onset_detect)

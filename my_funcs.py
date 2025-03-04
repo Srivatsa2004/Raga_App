@@ -30,8 +30,8 @@ def plot_waveform(y, sr, onset_times):
     plt.legend()
     return plt # Important: return the plot object
 
-def compute_stft(y, sr, n_fft=2048, hop_length=512):
-    stft = librosa.stft(y, n_fft=n_fft, hop_length=hop_length)
+def compute_stft(y_clean, sr, n_fft=2048, hop_length=512):
+    stft = librosa.stft(y_clean, n_fft=n_fft, hop_length=hop_length)
     frequencies = librosa.fft_frequencies(sr=sr, n_fft=n_fft)
     return stft, frequencies
 

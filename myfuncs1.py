@@ -58,7 +58,7 @@ def get_shifted_swaras(onset_frequencies, shruthis, input_shruthi):
     except ValueError:
         return f"Shruthi '{input_shruthi}' not found in the dictionary."
     shifted_shruthis = {}
-    carnatic_swaras = ['S', 'R1', 'R2', 'G2', 'G3', 'M1', 'M2', 'P', 'D1', 'N1', 'N2', 'N3']
+    carnatic_swaras = ['S', 'R1', 'R2' or 'G1', 'R3' or 'G2','G3','M1', 'M2', 'P', 'D1','D2' or 'N1', 'D3' or 'N2', 'N3']
     for i in range(len(shruthi_names)):
         swara_index = (i - start_index) % len(carnatic_swaras)
         shifted_shruthis[shruthi_names[i]] = carnatic_swaras[swara_index]

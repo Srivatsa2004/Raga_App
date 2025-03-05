@@ -48,6 +48,7 @@ def match_swaras(onset_frequencies, shruthis):
             if abs(frequency - closest_shruthi_frequency) <= 6:
                 best_match_swara = shruthi_name[1] if isinstance(shruthi_name, tuple) else shruthi_name
                 match_swara.append(best_match_swara)
+    print(match_swara)
     return match_swara
 
 def get_shifted_swaras(onset_frequencies, shruthis, input_shruthi):

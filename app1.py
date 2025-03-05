@@ -28,9 +28,9 @@ if uploaded_file is not None:
 
         if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
             st.write(unique_swaras) #display the error message
-    else:
-        df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
-        matched_ragas = find_raga(unique_swaras, df)
+        else:
+            df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
+            matched_ragas = find_raga(unique_swaras, df)
 
     
     plot = plot_onsets(y_clean, sr, onset_times)

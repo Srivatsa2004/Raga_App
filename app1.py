@@ -14,7 +14,7 @@ if uploaded_file is not None:
     y_clean = apply_noise_cancellation(y)
     #onset_detect, onset_times = detect_onsets(y, sr,thresh)
     #onset_frequencies = get_onset_frequencies(y, sr, onset_detect)
-    onset_detect, onset_times = detect_onsets(y_clean, sr, threshold)
+    onset_detect, onset_times = detect_onsets(y_clean, sr, thresh)
     onset_frequencies = extract_onset_frequencies(stft, frequencies, onset_detect)
     
     shruthis={('C','Sa'): [261.63,523.25], ('C#','R1'): [277.18,554.37],

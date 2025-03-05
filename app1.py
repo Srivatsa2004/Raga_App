@@ -5,7 +5,7 @@ from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_o
 st.title("Carnatic Raga Detection")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav"])
-thresh = st.slider("Threshold for noise reduction", 0.0, 0.1, 0.02)
+thresh = st.slider("Threshold for noise reduction", 0.0, 0.1)
 if uploaded_file is not None:
     with open("temp.opus", "wb") as f:
         f.write(uploaded_file.getbuffer())

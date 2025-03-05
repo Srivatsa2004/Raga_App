@@ -31,11 +31,13 @@ if uploaded_file is not None:
         else:
             df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
             matched_ragas = find_raga(unique_swaras, df)
-            
+
+    matched_swaras= match_swaras(onset_frequencies, shruthis)
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
     #st.write("Onset Frequencies:", onset_frequencies)
     st.write("Swaras:", unique_swaras)
+    st.write("Matched swaras:", matched_swaras)
     st.write("Possible Ragas:", matched_ragas)
 else:
     st.write("Please enter a shruthi")

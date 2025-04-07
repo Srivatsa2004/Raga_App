@@ -22,7 +22,7 @@ if uploaded_file is not None:
           ('F#',"M2"): [369.99,739.99], ('G',"P"): [392,783],
           ('G#',"D1"): [415.3,830.61],('A',"D2/N1"): [440,880],
           ('A#',"D3/N2"): [466.16,932.68], ('B',"N3"): [246.94, 493.88, 987.77]}
-    input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**", key=shruthi_input)
+    input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
     submit = st.button("Submit")
     if submit:
         if not input_shruthi:

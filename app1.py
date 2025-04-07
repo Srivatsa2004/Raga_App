@@ -24,7 +24,7 @@ if uploaded_file is not None:
           ('A#',"D3/N2"): [466.16,932.68], ('B',"N3"): [246.94, 493.88, 987.77]}
     with st.form("my_actual_form"):
         input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
-        submit = st.button("Submit")
+        submit = st.form_submit_button("Submit")
         if submit:
             if not input_shruthi:
                 st.warning("Please Enter the shruthi:")

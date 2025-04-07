@@ -36,7 +36,7 @@ if uploaded_file is not None:
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
     #st.write("Possible Ragas:", matched_ragas)
-else:
-    st.write("Please enter a shruthi")
+    else:
+        st.write("Please enter a shruthi")
 
 

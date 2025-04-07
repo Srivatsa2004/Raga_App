@@ -42,6 +42,6 @@ if uploaded_file is not None:
     st.pyplot(plot) #add this line
 
 st.divider()
-notice_text = "© Created by Srivatsa S. Copyrights Reserved."
+notice_text = "**© Created by Srivatsa S. Copyrights Reserved.**"
 st.caption(notice_text)
 

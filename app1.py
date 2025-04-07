@@ -24,7 +24,8 @@ if uploaded_file is not None:
           ('A#',"D3/N2"): [466.16,932.68], ('B',"N3"): [246.94, 493.88, 987.77]}
     input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
     submit = st.button("Submit")
-    if input_shruthi:
+    #if input_shruthi:
+    if submit:
         unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
 
         if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string

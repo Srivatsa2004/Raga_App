@@ -26,7 +26,7 @@ if uploaded_file is not None:
     submit = st.button("Submit")
     if submit:
         if not input_shruthi:
-            st.warning("Please Enter the shruthi:")
+            st.warning("Please Enter  shruthi:")
         else:
             unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
 

@@ -25,7 +25,7 @@ if uploaded_file is not None:
     input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
     submit = st.button("Submit")
     #if input_shruthi:
-    if submit == " ":
+    if not submit:                    # in python any empty string becomes a boolean value
         st.write("Please enter the Shruthi")
     if submit:
         unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)

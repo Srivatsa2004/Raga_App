@@ -33,7 +33,7 @@ if uploaded_file is not None:
             matched_ragas = find_raga(unique_swaras, df)
             st.write("Possible Ragas:", matched_ragas)
     else:
-       st.write("Please enter a shruthi")
+       #st.write("Please enter a shruthi")
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
    # else:

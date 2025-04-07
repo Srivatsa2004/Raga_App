@@ -25,6 +25,8 @@ if uploaded_file is not None:
     input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
     submit = st.button("Submit")
     #if input_shruthi:
+    if submit == " ":
+        st.write("Please enter the Shruthi")
     if submit:
         unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
 
@@ -34,8 +36,8 @@ if uploaded_file is not None:
             df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
             matched_ragas = find_raga(unique_swaras, df)
             st.write("Possible Ragas:", matched_ragas)
-    else:
-       st.write("Please enter a shruthi")
+    #else:
+       #st.write("Please enter a shruthi")
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
    # else:

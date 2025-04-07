@@ -41,6 +41,7 @@ if uploaded_file is not None:
     st.pyplot(plot) #add this line
 
 st.divider()
+current_year = datetime.datetime.now().year
 notice_text = f"© {current_year} Created by Srivatsa S. Copyrights Reserved."
 st.caption(notice_text)
 

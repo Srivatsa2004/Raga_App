@@ -22,20 +22,20 @@ if uploaded_file is not None:
           ('F#',"M2"): [369.99,739.99], ('G',"P"): [392,783],
           ('G#',"D1"): [415.3,830.61],('A',"D2/N1"): [440,880],
           ('A#',"D3/N2"): [466.16,932.68], ('B',"N3"): [246.94, 493.88, 987.77]}
-    input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**")
+    input_shruthi = st.text_input("**Enter the shruthi (e.g., C, C#, D):**, key = input_shruthi")
     submit = st.button("Submit")
-    #if input_shruthi:
-    if not submit:                    # in python any empty string becomes a boolean value
-        st.write("Please enter the Shruthi")
     if submit:
-        unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
-
-        if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
-            st.write(unique_swaras) #display the error message
+        if not input_shruthi:
+            st.warning("Please Enter the shruthi:")
         else:
-            df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
-            matched_ragas = find_raga(unique_swaras, df)
-            st.write("Possible Ragas:", matched_ragas)
+            unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
+
+            if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
+                st.write(unique_swaras) #display the error message
+            else:
+                df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
+                matched_ragas = find_raga(unique_swaras, df)
+                st.write("Possible Ragas:", matched_ragas)
     #else:
        #st.write("Please enter a shruthi")
     plot = plot_onsets(y_clean, sr, onset_times)

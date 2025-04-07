@@ -31,9 +31,9 @@ if uploaded_file is not None:
             else:
                 unique_swaras = get_shifted_swaras(onset_frequencies, shruthis, input_shruthi)
 
-                 if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
+                if isinstance(unique_swaras, str): #check if get_shifted_swaras returned an error string
                     st.write(unique_swaras) #display the error message
-                 else:
+                else:
                     df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
                     matched_ragas = find_raga(unique_swaras, df)
                     st.write("Possible Ragas:", matched_ragas)

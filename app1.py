@@ -41,8 +41,5 @@ if uploaded_file is not None:
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
 
-st.divider()
 
-notice_text = "© Created by Srivatsa S. Copyrights Reserved."
-st.caption(notice_text)
 

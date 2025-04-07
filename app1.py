@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import datetime
+
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
 st.title("Raaga Darshini - The Raaga Detector")
@@ -42,7 +42,7 @@ if uploaded_file is not None:
     st.pyplot(plot) #add this line
 
 st.divider()
-current_year = datetime.datetime.now().year
-notice_text = f"© {current_year} Created by Srivatsa S. Copyrights Reserved."
+
+notice_text = "© Created by Srivatsa S. Copyrights Reserved."
 st.caption(notice_text)
 

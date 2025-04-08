@@ -7,6 +7,7 @@ from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_o
 #bg code
 background_url = "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/image.jpg"  # You can change this to any valid CSS color name or hex code
 textcolor= "white"
+drag_drop_text_color = "black"
 st.markdown(
     f"""
     <style>
@@ -16,6 +17,9 @@ st.markdown(
     }}
      p, h1, h2, h3, h4, h5, h6, span, a {{
         color: {textcolor} !important;
+    }}
+    div[data-testid="stFileUploader"] > div:first-child > div:nth-child(2) > div {{
+        color: {drag_drop_text_color} !important;
     }}
     </style>
     """,

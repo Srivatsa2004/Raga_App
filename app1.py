@@ -5,7 +5,7 @@ from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_o
 #STyling code
 image_url = "pic.jpg" # Replace with your image URL
 
-page_bg_img = f
+page_bg_img = f'''
 <style>
 [data-testid="stAppViewContainer"] > .main {{
     background-image: url("{pic.jpgl}");
@@ -14,7 +14,7 @@ page_bg_img = f
     background-attachment: fixed;
     background-position: center;
 }}
-</style> '''
+</style> 
 /* Optional styles */
 [data-testid="stHeader"] {{
     background-color: rgba(0, 0, 0, 0);

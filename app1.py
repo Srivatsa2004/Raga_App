@@ -15,7 +15,7 @@ st.markdown(
         background-size: cover;
     }}
     h1 {{
-        color: white;
+        color: white !important;
     }}
     </style>
     """,

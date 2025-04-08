@@ -2,6 +2,28 @@ import streamlit as st
 import pandas as pd
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
+#STyling code
+image_url = "https://www.example.com/your_background_image.jpg" # Replace with your image URL
+
+page_bg_img = f
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+    background-image: url("{image_url}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}}
+</style> '''
+/* Optional styles */
+[data-testid="stHeader"] {{
+    background-color: rgba(0, 0, 0, 0);
+}}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 st.title("Raaga Darshini - The Raaga Detector")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav", "mp3"])

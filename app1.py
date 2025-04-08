@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
-st.title("Raaga Darshini - The Raaga Detector")
+st.title("Raaga Darshini - The Raaga Detector Sri")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav", "mp3"])
 thresh = st.slider("Threshold for noise reduction", 0.0, 0.1,0.02)

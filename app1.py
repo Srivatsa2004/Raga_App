@@ -15,7 +15,7 @@ st.markdown(
         background-size: cover;
     }}
     body, p, label, h1, h2, h3, h4, h5, h6, span, div, a {{
-        color: {text_color} !important;
+        color: {textcolor} !important;
     }}
     </style>
     """,

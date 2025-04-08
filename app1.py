@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import base64 # python library for encoding
-from  pathlib import path
+from  pathlib import Path
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
 @st.cache_data # Cache the encoding to potentially speed up reruns
@@ -16,7 +16,7 @@ def set_image_as_page_bg(image_file):
     """ Sets an image (png or jpg) as the page background """
     # Construct the file path relative to the script
     script_dir = Path(__file__).parent
-    file_path = script_dir / image_file
+    file_path = script_dir / image_filename
     try:
         # Get the file extension to set the correct MIME type
         file_extension = file_path.suffix.lower()

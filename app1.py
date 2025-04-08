@@ -1,8 +1,59 @@
 import streamlit as st
 import pandas as pd
+import base64 # python library for encoding
+from  pathlib import Path
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
+@st.cache_data # Cache the encoding to potentially speed up reruns
+def get_base64_of_bin_file(bin_file):
+    """ Reads a binary file and returns its Base64 encoded string """
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
+#function to set bg
+def set_image_as_page_bg(image_file):
+    """ Sets an image (png or jpg) as the page background """
+    # Construct the file path relative to the script
+    script_dir = Path(__file__).parent
+    file_path = script_dir / image_file
+    try:
+        # Get the file extension to set the correct MIME type
+        file_extension = file_path.suffix.lower()
+        mime_type = f"image/{file_extension.strip('.')}" # e.g., image/png or image/jpeg
+
+        bin_str = get_base64_of_bin_file(str(file_path)) # Pass the full path as string
+        page_bg_img = f'''
+        <style>
+        [data-testid="stAppViewContainer"] > .main {{
+            background-image: url("data:{mime_type};base64,{bin_str}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }}
+        [data-testid="stHeader"] {{
+            background-color: rgba(0, 0, 0, 0);
+        }}
+        </style>
+        '''
+        st.markdown(page_bg_img, unsafe_allow_html=True)
+        return True # Indicate success
+    except FileNotFoundError:
+        st.error(f"Background image file not found: {file_path}")
+        return False # Indicate failure
+    except Exception as e:
+        st.error(f"An error occurred while setting background: {e}")
+        return False # Indicate failure
+
+# --- Your Streamlit App Code Starts Here ---
+
+# --- SET BACKGROUND IMAGE ---
+# Define the relative path to your image within the repository
+# Make sure this file is committed and pushed to GitHub!
+image_filename = "pic.jpg" # <<< CHANGE THIS TO YOUR IMAGE FILENAME
+
+set_image_as_page_bg(image_filename)
 
 
 

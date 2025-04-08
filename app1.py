@@ -57,7 +57,7 @@ set_image_as_page_bg(image_filename)
 
 
 
-st.title("Raaga Darshini - The Raaga Detector")
+st.title("Raaga Darshini - The Raaga Detector Sri")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav", "mp3"])
 thresh = st.slider("Threshold for noise reduction", 0.0, 0.1,0.02)

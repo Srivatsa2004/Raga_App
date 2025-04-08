@@ -3,12 +3,12 @@ import pandas as pd
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
 #STyling code
-image_url = "https://www.example.com/your_background_image.jpg" # Replace with your image URL
+image_url = "pic.jpg" # Replace with your image URL
 
 page_bg_img = f
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("{image_url}");
+    background-image: url("{pic.jpgl}");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

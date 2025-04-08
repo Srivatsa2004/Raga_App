@@ -14,7 +14,7 @@ st.markdown(
        background-image: url("{background_url}");
         background-size: cover;
     }}
-    body, p, label, h1, h2, h3, h4, h5, h6, span, div, a {{
+     p, label, h1, h2, h3, h4, h5, h6, span, div, a {{
         color: {textcolor} !important;
     }}
     </style>

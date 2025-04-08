@@ -14,6 +14,9 @@ st.markdown(
        background-image: url("{background_url}");
         background-size: cover;
     }}
+    h1 {{
+        color: white;
+    }}
     </style>
     """,
     unsafe_allow_html=True

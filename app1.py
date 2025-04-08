@@ -4,14 +4,21 @@ import base64 # python library for encoding
 from pathlib import Path
 from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras, find_raga
 
+
 @st.cache_data # Cache the encoding to potentially speed up reruns
-#function to set bg (CORRECTED)
-def set_image_as_page_bg(image_file): # The function receives the filename here as 'image_file'
+def get_base64_of_bin_file(bin_file):
+    """ Reads a binary file and returns its Base64 encoded string """
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# --- Function to set background ---
+def set_image_as_page_bg(image_file):
     """ Sets an image (png or jpg) as the page background """
+    # Construct the file path relative to the script
     script_dir = Path(__file__).parent
-    # --- Correction is here: Use 'image_file' (the argument) ---
     file_path = script_dir / image_file
-    # --- End Correction ---
+
     try:
         # Get the file extension to set the correct MIME type
         file_extension = file_path.suffix.lower()
@@ -41,6 +48,14 @@ def set_image_as_page_bg(image_file): # The function receives the filename here 
         st.error(f"An error occurred while setting background: {e}")
         return False # Indicate failure
 
+# --- Your Streamlit App Code Starts Here ---
+
+# --- SET BACKGROUND IMAGE ---
+# Define the relative path to your image within the repository
+# Make sure this file is committed and pushed to GitHub!
+image_filename = "pic.jpg" # <<< CHANGE THIS TO YOUR IMAGE FILENAME
+
+set_image_as_page_bg(image_filename)
 
 
 st.title("Raaga Darshini - The Raaga Recognizer")

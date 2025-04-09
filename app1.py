@@ -6,7 +6,7 @@ from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_o
 
 #bg code
 #background_url = "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/image.jpg"  # You can change this to any valid CSS color name or hex code
-background_url= "https://github.com/Srivatsa2004/Raga_App/blob/main/viomrid.jpg?raw=true"
+background_url= "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/1600w-u8cGtubzIL8.webp"
 textcolor= "blue"
 drag_drop_text_color = "black"
 st.markdown(

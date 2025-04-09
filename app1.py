@@ -8,7 +8,7 @@ from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets, plot_o
 #background_url = "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/image.jpg"  # You can change this to any valid CSS color name or hex code
 background_url= "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/1600w-u8cGtubzIL8.webp"
 
-
+textcolor= "white"
 st.markdown(
     f"""
     <style>
@@ -16,7 +16,9 @@ st.markdown(
        background-image: url("{background_url}");
         background-size: cover;
     }}
-     
+     p, h1, h2, h3, h4, h5, h6, span, a {{
+         color: {textcolor} !important;
+     }}
     </style>
     """,
     unsafe_allow_html=True

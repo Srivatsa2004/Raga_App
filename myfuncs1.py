@@ -106,7 +106,7 @@ def find_raga(unique_swaras, df):
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
            # matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)}")
             
-            raga_name.dfloc[index, 'Raagas']
+            raga_name.loc[index, 'Raagas']
             melakarta_numbrt= index+1
             def get_ordinal(n):
                 if 10 <= n % 100 <= 20:

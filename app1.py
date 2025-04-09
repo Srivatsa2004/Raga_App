@@ -64,7 +64,7 @@ if uploaded_file is not None:
                     st.markdown(
                             f"""
                             <div style="background-color: white; padding: 10px; border-radius: 5px;">
-                                <p style="color: black;">**Possible ragas :** {ragas_string}</p>
+                                <p style="color: black;">**Possible ragas :** {matched_ragas}</p>
                             </div>
                             """,
                             unsafe_allow_html=True

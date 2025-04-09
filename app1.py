@@ -60,15 +60,18 @@ if uploaded_file is not None:
                     df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
                     matched_ragas = find_raga(unique_swaras, df)
                     #st.write("Possible ragas :", matched_ragas)
-                    st.write("Possible ragas :", ",".join(matched_ragas))
-                    st.markdown(
+                    if matched_ragas:
+                        ragas_string = ", ".join(matched_ragas)
+                        st.markdown(
                             f"""
                             <div style="background-color: white; padding: 10px; border-radius: 5px;">
-                                <p style="color: black;">**Possible ragas :** {matched_ragas}</p>
+                                <p style="color: black;">**Possible ragas :** {ragas_string}</p>
                             </div>
                             """,
                             unsafe_allow_html=True
-                            )
+                        )
+                    else:
+                        st.write("No matching ragas found.")
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
 

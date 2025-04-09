@@ -109,7 +109,7 @@ def find_raga(unique_swaras, df):
             raga_name.dfloc[index, 'Raagas']
             melakarta_numbrt= index+1
             def get_ordinal(n):
-                 if 10 <= n % 100 <= 20:
+                if 10 <= n % 100 <= 20:
                     suffix = 'th'
                 else:
                     suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')

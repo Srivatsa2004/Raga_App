@@ -59,7 +59,8 @@ if uploaded_file is not None:
                     #st.write("Hi!")
                     df = pd.read_csv("Shruthi & Ragas - Raagas with names.csv")
                     matched_ragas = find_raga(unique_swaras, df)
-                    st.write("Possible ragas :", matched_ragas)
+                    #st.write("Possible ragas :", matched_ragas)
+                    st.write("Possible ragas :", ",".join(matched_ragas))
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
 

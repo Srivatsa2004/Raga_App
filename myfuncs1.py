@@ -116,5 +116,5 @@ def find_raga(unique_swaras, df):
                 return suffix
 
             ordinal_suffix = get_ordinal(melakartha_number)
-            matched_ragas.append(f"{melakartha_number}{ordinal_suffix   
+            matched_ragas.append(f"{melakartha_number}{ordinal_suffix} Melakartha - Raaga: {raga_name} ({', '.join(unique_swaras)})")
     return matched_ragas

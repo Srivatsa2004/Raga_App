@@ -68,6 +68,7 @@ if uploaded_file is not None:
                             </div>
                             """,
                             unsafe_allow_html=True
+                            )
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
 

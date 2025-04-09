@@ -61,6 +61,13 @@ if uploaded_file is not None:
                     matched_ragas = find_raga(unique_swaras, df)
                     #st.write("Possible ragas :", matched_ragas)
                     st.write("Possible ragas :", ",".join(matched_ragas))
+                    st.markdown(
+                            f"""
+                            <div style="background-color: white; padding: 10px; border-radius: 5px;">
+                                <p style="color: black;">**Possible ragas :** {ragas_string}</p>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
     plot = plot_onsets(y_clean, sr, onset_times)
     st.pyplot(plot) #add this line
 

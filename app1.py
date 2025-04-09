@@ -27,7 +27,7 @@ st.markdown(
 st.title("Raaga Darshini - The Raaga Recognizer")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav", "mp3"])
-thresh = st.slider("Threshold for noise reduction", 0.0, 0.1,0.02)
+thresh = st.slider("Threshold for noise reduction", 0.0)
 if uploaded_file is not None:
     with open("temp.opus", "wb") as f:
         f.write(uploaded_file.getbuffer())

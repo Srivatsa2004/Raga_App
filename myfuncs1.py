@@ -104,5 +104,17 @@ def find_raga(unique_swaras, df):
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
-            matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)}")
+           # matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)}")
+            
+            raga_name.dfloc[index, 'Raagas']
+            melakarta_numbrt= index+1
+            def get_ordinal(n):
+                 if 10 <= n % 100 <= 20:
+                    suffix = 'th'
+                else:
+                    suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')
+                return suffix
+
+            ordinal_suffix = get_ordinal(melakartha_number)
+            matched_ragas.append(f"{melakartha_number}{ordinal_suffix   
     return matched_ragas

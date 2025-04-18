@@ -100,7 +100,7 @@ def get_shifted_swaras(onset_frequencies, shruthis, input_shruthi):
 def find_raga(unique_swaras, df):
     ordered_swaras_set = set(unique_swaras)
     matched_ragas = []
-    for index, value in df['Swaras'].items():
+    for idx,index, value in df['Swaras'].items():
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:

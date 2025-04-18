@@ -104,7 +104,8 @@ def find_raga(unique_swaras, df):
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
-            matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)}")
-            
-            
+            melakartha_value = f"{df.loc[idx, 'index']}th melakartha" if 'index' in df.columns else ""
+            matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)} {melakartha_value}")
+                   
     return matched_ragas
+

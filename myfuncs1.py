@@ -113,8 +113,8 @@ def find_raga(unique_swaras, df):
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             melakartha_value = ""
-            if 'index' in df.columns:
-                index_number = df.loc[index, 'index']
+            if 'Index' in df.columns:
+                index_number = df.loc[Index, 'index']
                 suffix = get_ordinal_suffix(index_number)
                 melakartha_value = f"{index_number}{suffix} melakartha"
             matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} ({', '.join(unique_swaras)}) {melakartha_value}")

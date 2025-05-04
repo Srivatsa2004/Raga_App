@@ -5,6 +5,8 @@ from pathlib import Path
 from myfuncs1 import (load_audio, apply_noise_cancellation, detect_onsets,
 plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras,
 find_raga, get_ordinal_suffix)
+import streamlit.components.v1 as components
+
 
 #bg code
 #background_url = "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/image.jpg"  # You can change this to any valid CSS color name or hex code
@@ -24,6 +26,55 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+#for pop up text
+def main():
+    modal_html = """
+    <div id="welcomeModal" style="
+        display: block; /* Show by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */">
+        <div style="
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            position: relative; ">
+            <span id="closeButton" style="
+                color: #aaa;
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;"> &times; </span>
+            <p>Namaste! This is raaga Darshini, the raaga recognizer. I can help you find out the ragas played on keyboard (being plain notes).</p>
+        </div>
+    </div>
+    <script>
+        var closeButton = document.getElementById("closeButton");
+
+        // Close the modal when the close button is clicked
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    """
+
+    components.html(modal_html, height=300)
 
 
 st.title("Raaga Darshini - The Raaga Recognizer")

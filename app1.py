@@ -45,7 +45,7 @@ modal_html = """
         padding: 20px;
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
-        position: relative;
+        position: fixed;
     ">
         <span id="closeButton" style="
             color: #aaa;

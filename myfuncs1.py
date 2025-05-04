@@ -97,6 +97,14 @@ def get_shifted_swaras(onset_frequencies, shruthis, input_shruthi):
     unique_swaras = list(OrderedDict.fromkeys(ordered_swaras))
     return unique_swaras
 
+def get_ordinal_suffix(number):
+    if 10 <= number % 100 <= 20:
+        suffix = 'th'
+    else:
+        suffixes = {1: 'st', 2: 'nd', 3: 'rd'}
+        suffix = suffixes.get(number % 10, 'th')
+    return suffix
+
 def find_raga(unique_swaras, df):
     ordered_swaras_set = set(unique_swaras)
     matched_ragas = []
@@ -104,8 +112,17 @@ def find_raga(unique_swaras, df):
         cell_swaras = re.findall(r"[SRGMPDN][123]?[/]?[SRGMPDN]?[123]?", value)
         cell_swaras_set = set(cell_swaras)
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
+            melakartha_value = ""
+            if 'index' in df.columns:
+                index_number = df.loc[idx, 'index']
+                suffix = get_ordinal_suffix(index_number)
+                melakartha_value = f"{index_number}{suffix} melakartha"
+            matched_ragas.append(f"Raaga: {df.loc[idx, 'Raagas']} ({', '.join(unique_swaras)}) {melakartha_value}")
+    return matched_ragas
+        '''
+        if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             melakartha_value = f"{df.loc[index, 'Index']}th melakartha" if 'Index' in df.columns else ""
             matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)} {melakartha_value}")
                    
-    return matched_ragas
+    return matched_ragas'''
 

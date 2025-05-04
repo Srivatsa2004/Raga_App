@@ -119,7 +119,7 @@ def find_raga(unique_swaras, df):
                 melakartha_value = f"{index_number}{suffix} melakartha"
             matched_ragas.append(f"Raaga: {df.loc[idx, 'Raagas']} ({', '.join(unique_swaras)}) {melakartha_value}")
     return matched_ragas
-        '''
+    '''
         if ordered_swaras_set.issubset(cell_swaras_set) and cell_swaras_set == ordered_swaras_set:
             melakartha_value = f"{df.loc[index, 'Index']}th melakartha" if 'Index' in df.columns else ""
             matched_ragas.append(f"Raaga: {df.loc[index, 'Raagas']} {', '.join(unique_swaras)} {melakartha_value}")

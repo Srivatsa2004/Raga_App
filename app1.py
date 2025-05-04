@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 import base64 # python library for encoding
 from pathlib import Path
-from myfuncs1 import load_audio, apply_noise_cancellation, detect_onsets,
+from myfuncs1 import (load_audio, apply_noise_cancellation, detect_onsets,
 plot_onsets, get_onset_frequencies, match_swaras, get_shifted_swaras,
-find_raga, get_ordinal_suffix
+find_raga, get_ordinal_suffix)
 
 #bg code
 #background_url = "https://raw.githubusercontent.com/Srivatsa2004/Raga_App/refs/heads/main/image.jpg"  # You can change this to any valid CSS color name or hex code

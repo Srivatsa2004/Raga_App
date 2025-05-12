@@ -39,8 +39,6 @@ if st.session_state['show_modal']:
         st.write("This tool helps you identify ragas played on a keyboard (plain notes).")
         close_button = st.button("Got it!", key="close_modal_button")
         if close_button:
-            st.session_state['show_modal'] = False
-            # Clear the modal content
             st.write("The raaga recognizer is ready!") # Message after closing modal
             # You can directly place your other elements here
             # For example, your audio input or instructions

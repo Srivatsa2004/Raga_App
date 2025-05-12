@@ -73,7 +73,6 @@ modal_html = f"""
     // Close the modal when the close button is clicked
     closeButton.onclick = function() {
         
-        // Send a message to Streamlit to update the session state
         Streamlit.set({{ "show_modal": false }});
     }
 

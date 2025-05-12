@@ -30,8 +30,6 @@ st.markdown(
 
 if 'show_modal' not in st.session_state:
     st.session_state['show_modal'] = True
-if 'start_recognition' not in st.session_state:
-    st.session_state['start_recognition'] = False
 
 modal_placeholder = st.empty()
 
@@ -43,15 +41,12 @@ if st.session_state['show_modal']:
         if close_button:
             st.session_state['show_modal'] = False
             modal_placeholder.empty() # Clear the modal content
+            st.write("The raaga recognizer is ready!") # Message after closing modal
+            # You can directly place your other elements here
+            # For example, your audio input or instructions
 
-if not st.session_state['show_modal']:
-    if not st.session_state['start_recognition']:
-        start_button = st.button("Start Recognizing")
-        if start_button:
-            st.session_state['start_recognition'] = True
-    else:
-        st.write("Recognition process started...")
-        # Add your recognition logic here
+else:
+    st.write("The raaga recognizer is ready!")
 
 
 

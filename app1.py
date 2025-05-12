@@ -36,7 +36,8 @@ modal_placeholder = st.empty()
 if st.session_state['show_modal']:
     with modal_placeholder.container():
         st.markdown("### Namaste! Welcome to Raaga Darshini!")
-        st.write("This tool helps you identify ragas played on a keyboard (plain notes). Please use the thresh slider to adjust the noise filter ")
+        st.write("This tool helps you identify ragas played on a keyboard (plain notes). 
+        <br>Please use the thresh slider to adjust the noise filter ")
         close_button = st.button("Got it!", key="close_modal_button")
         if close_button:
             st.session_state['show_modal'] = False

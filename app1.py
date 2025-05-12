@@ -73,7 +73,7 @@ modal_html = f"""
     // Close the modal when the close button is clicked
     closeButton.onclick = function() {
         
-        Streamlit.set({ "show_modal": false }});
+        Streamlit.set({ "show_modal": false });
     }
 
     // Close the modal if the user clicks outside of it

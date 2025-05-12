@@ -27,9 +27,14 @@ st.markdown(
 )
 
 #for pop up text
-modal_html = """
+
+
+if 'show_modal' not in st.session_state:
+    st.session_state['show_modal'] = True
+
+modal_html = f"""
 <div id="welcomeModal" style="
-    display: block; /* Show by default */
+    display: {'block' if st.session_state['show_modal'] else 'none'};
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -37,15 +42,14 @@ modal_html = """
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 ">
     <div style="
         background-color: #fefefe;
-        margin: 5% auto; /* 15% from the top and centered */
+        margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
-        position: fixed;
+        position: relative; /* To position the close button */
     ">
         <span id="closeButton" style="
             color: #aaa;
@@ -70,15 +74,28 @@ modal_html = """
     // Close the modal when the close button is clicked
     closeButton.onclick = function() {
         modal.style.display = "none";
+        // Send a message to Streamlit to update the session state
+        Streamlit.set({ "show_modal": false });
     }
 
     // Close the modal if the user clicks outside of it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            // Send a message to Streamlit to update the session state
+            Streamlit.set({ "show_modal": false });
         }
     }
 </script>
+"""
+
+st.markdown(modal_html, unsafe_allow_html=True)
+
+if not st.session_state['show_modal']:
+    st.write("Welcome! The raaga recognizer is ready.")
+    # Place your other Streamlit elements here
+    st.button("Start Recognizing")
+    # ... more elements ...
 """
 
 components.html(modal_html, height=300)

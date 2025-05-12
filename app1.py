@@ -87,7 +87,12 @@ modal_html = f"""
     }
 </script>
 """
+st.markdown(modal_html, unsafe_allow_html=True)
 
+if not st.session_state['show_modal']:
+    st.write("Welcome! The raaga recognizer is ready.")
+    # Place your other Streamlit elements here
+    st.button("Start Recognizing")
 
 components.html(modal_html, height=300)
 

@@ -40,7 +40,7 @@ if st.session_state['show_modal']:
         close_button = st.button("Got it!", key="close_modal_button")
         if close_button:
             st.session_state['show_modal'] = False
-            modal_placeholder.empty() # Clear the modal content
+            # Clear the modal content
             st.write("The raaga recognizer is ready!") # Message after closing modal
             # You can directly place your other elements here
             # For example, your audio input or instructions

@@ -143,8 +143,7 @@ if uploaded_file is not None:
                             f"""
                             <div style="background-color: white; padding:10px 10px 2px 10px; border-radius: 3px;">
                                 <p style="color: black;"> {ragas_string}</p>
-                            </div>
-                            """
+                            </div> """,
                             unsafe_allow_html=True
                         )
                     else:

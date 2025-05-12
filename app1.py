@@ -28,112 +28,69 @@ st.markdown(
 
 #for pop up text
 
+if 'show_modal' not in st.session_state:
+    st.session_state['show_modal'] = True
 
-modal_html = """
-
+modal_html = r"""
 <div id="welcomeModal" style="
-
-    display: block; /* Show by default */
-
-    position: fixed; /* Stay in place */
-
-    z-index: 1; /* Sit on top */
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%; /* Full width */
-
-    height: 100%; /* Full height */
-
-    overflow: auto; /* Enable scroll if needed */
-
-    /*background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
+    display: %s;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 ">
-
-    <div style="
-
-        background-color: #fefefe;
-
-        margin: 5% auto; /* 15% from the top and centered */
-
-        padding: 20px;
-
-        border: 1px solid #888;
-
-        width: 80%; /* Could be more or less, depending on screen size */
-
-        position: fixed;
-
-    ">
-
-        <span id="closeButton" style="
-
-            color: #aaa;
-
-            position: absolute;
-
-            right: 10px;
-
-            top: 5px;
-
-            font-size: 28px;
-
-            font-weight: bold;
-
-            cursor: pointer;
-
-        ">&times;</span>
-
-        <p>Namaste! This is raaga Darshini, the raaga recognizer. I can help you find out the ragas played on keyboard (being plain notes).</p>
-
-    </div>
-
+    <div style="
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        position: relative;
+    ">
+        <span id="closeButton" style="
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        ">&times;</span>
+        <p>Namaste! This is raaga Darshini, the raaga recognizer. I can help you find out the ragas played on keyboard (being plain notes).</p>
+    </div>
 </div>
 
-
-
 <script>
+    // Get the close button
+    var closeButton = document.getElementById("closeButton");
 
-    // Get the modal
+    // Close the modal when the close button is clicked
+    closeButton.onclick = function() {
+        // Send a message to Streamlit to update the session state
+        Streamlit.set({ "show_modal": false });
+    }
 
-    var modal = document.getElementById("welcomeModal");
-
-
-
-    // Get the close button
-
-    var closeButton = document.getElementById("closeButton");
-
-
-
-    // Close the modal when the close button is clicked
-
-    closeButton.onclick = function() {
-
-        modal.style.display = "none";
-
-    }
-
-
-
-    // Close the modal if the user clicks outside of it
-
-    window.onclick = function(event) {
-
-        if (event.target == modal) {
-
-            modal.style.display = "none";
-
-        }
-
-    }
-
-
+    // Close the modal if the user clicks outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("welcomeModal");
+        if (event.target == modal) {
+            // Send a message to Streamlit to update the session state
+            Streamlit.set({ "show_modal": false });
+        }
+    }
 </script>
-"""
+""" % ('block' if st.session_state['show_modal'] else 'none')
+
+st.markdown(modal_html, unsafe_allow_html=True)
+
+if not st.session_state['show_modal']:
+    st.write("Welcome! The raaga recognizer is ready.")
+    st.button("Start Recognizing")
+
+
 
 components.html(modal_html, height=300)
 

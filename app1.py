@@ -94,8 +94,7 @@ if not st.session_state['show_modal']:
     st.write("Welcome! The raaga recognizer is ready.")
     # Place your other Streamlit elements here
     st.button("Start Recognizing")
-    # ... more elements ...
-"""
+    # ... more elements ... 
 
 components.html(modal_html, height=300)
 

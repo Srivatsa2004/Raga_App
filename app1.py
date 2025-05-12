@@ -31,65 +31,20 @@ st.markdown(
 if 'show_modal' not in st.session_state:
     st.session_state['show_modal'] = True
 
-modal_html = r"""
-<div id="welcomeModal" style="
-    display: %s;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-">
-    <div style="
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        position: relative;
-    ">
-        <span id="closeButton" style="
-            color: #aaa;
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        ">&times;</span>
-        <p>Namaste! This is raaga Darshini, the raaga recognizer. I can help you find out the ragas played on keyboard (being plain notes).</p>
-    </div>
-</div>
+modal_placeholder = st.empty()
 
-<script>
-    // Get the close button
-    var closeButton = document.getElementById("closeButton");
+if st.session_state['show_modal']:
+    with modal_placeholder.container():
+        st.markdown("### Welcome to Raaga Darshini!")
+        st.write("This tool helps you identify ragas played on a keyboard (plain notes).")
+        close_button = st.button("Got it!", key="close_modal_button")
+        if close_button:
+            st.session_state['show_modal'] = False
+            modal_placeholder.empty() # Clear the modal content
 
-    // Close the modal when the close button is clicked
-    closeButton.onclick = function() {
-        // Send a message to Streamlit to update the session state
-        Streamlit.set({ "show_modal": false });
-    }
-
-    // Close the modal if the user clicks outside of it
-    window.onclick = function(event) {
-        var modal = document.getElementById("welcomeModal");
-        if (event.target == modal) {
-            // Send a message to Streamlit to update the session state
-            Streamlit.set({ "show_modal": false });
-        }
-    }
-</script>
-""" % ('block' if st.session_state['show_modal'] else 'none')
-
-st.markdown(modal_html, unsafe_allow_html=True)
-
-if not st.session_state['show_modal']:
-    st.write("Welcome! The raaga recognizer is ready.")
-    st.button("Start Recognizing")
-
+st.write("Welcome! The raaga recognizer is ready.")
+# Place your other Streamlit elements here
+st.button("Start Recognizing")
 
 
 components.html(modal_html, height=300)

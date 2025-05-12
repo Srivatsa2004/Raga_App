@@ -144,7 +144,7 @@ if uploaded_file is not None:
                             <div style="background-color: white; padding:10px 10px 2px 10px; border-radius: 3px;">
                                 <p style="color: black;"> {ragas_string}</p>
                             </div>
-                            """,
+                            """
                             unsafe_allow_html=True
                         )
                     else:
@@ -155,4 +155,3 @@ if uploaded_file is not None:
 st.divider()
 notice_text = "**© Created by Srivatsa S. Copyrights Reserved.**"
 st.caption(notice_text)
-

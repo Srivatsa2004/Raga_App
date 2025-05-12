@@ -41,10 +41,6 @@ if st.session_state['show_modal']:
         if close_button:
             st.session_state['show_modal'] = False
             modal_placeholder.empty() # Clear the modal content
-
-
-
-
 st.title("Raaga Darshini - The Raaga Recognizer")
 
 uploaded_file = st.file_uploader("Upload an audio file", type=["opus", "wav", "mp3"])

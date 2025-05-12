@@ -47,7 +47,7 @@ st.write("Welcome! The raaga recognizer is ready.")
 st.button("Start Recognizing")
 
 
-components.html(modal_placeholder, height=300)
+components.html(modal_html, height=300)
 
 
 st.title("Raaga Darshini - The Raaga Recognizer")

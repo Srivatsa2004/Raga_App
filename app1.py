@@ -30,6 +30,8 @@ st.markdown(
 
 if 'show_modal' not in st.session_state:
     st.session_state['show_modal'] = True
+if 'start_recognition' not in st.session_state:
+    st.session_state['start_recognition'] = False
 
 modal_placeholder = st.empty()
 
@@ -42,9 +44,14 @@ if st.session_state['show_modal']:
             st.session_state['show_modal'] = False
             modal_placeholder.empty() # Clear the modal content
 
-st.write("Welcome! The raaga recognizer is ready.")
-# Place your other Streamlit elements here
-st.button("Start Recognizing")
+if not st.session_state['show_modal']:
+    if not st.session_state['start_recognition']:
+        start_button = st.button("Start Recognizing")
+        if start_button:
+            st.session_state['start_recognition'] = True
+    else:
+        st.write("Recognition process started...")
+        # Add your recognition logic here
 
 
 

@@ -74,7 +74,7 @@ modal_html = f"""
     closeButton.onclick = function() {
         modal.style.display = "none";
         // Send a message to Streamlit to update the session state
-        Streamlit.set({ "show_modal": false });
+        Streamlit.set({{ "show_modal": false }});
     }
 
     // Close the modal if the user clicks outside of it
@@ -82,7 +82,7 @@ modal_html = f"""
         if (event.target == modal) {
             modal.style.display = "none";
             // Send a message to Streamlit to update the session state
-            Streamlit.set({ "show_modal": false });
+            Streamlit.set({{ "show_modal": false }});
         }
     }
 </script>

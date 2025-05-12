@@ -42,8 +42,9 @@ if st.session_state['show_modal']:
             st.session_state['show_modal'] = False
             modal_placeholder.empty() # Clear the modal content
 
+# If you want to display something *always* after the modal (or if it was never shown):
 if not st.session_state['show_modal']:
-    st.write("The raaga recognizer is ready!")
+    st.write("Ready to proceed.")
 
 
 

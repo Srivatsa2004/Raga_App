@@ -41,16 +41,15 @@ modal_html = f"""
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-">
+    overflow: auto; /* Enable scroll if needed */ ">
     <div style="
         background-color: #fefefe;
         margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
-        position: relative; /* To position the close button */
-    ">
+        position: relative; /* To position the close button */ ">
+
         <span id="closeButton" style="
             color: #aaa;
             position: absolute;

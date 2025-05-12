@@ -80,7 +80,7 @@ modal_html = f"""
     // Close the modal if the user clicks outside of it
     window.onclick = function(event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+            modal.style.display = none;
             // Send a message to Streamlit to update the session state
             Streamlit.set({{ "show_modal": false }});
         }

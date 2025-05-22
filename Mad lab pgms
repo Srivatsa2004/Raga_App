@@ -114,3 +114,73 @@ Linear layout
 #activity_explicit.xml
 add a TextView with text explicit intent
 
+
+lab2: Orientation
+#MainActivity.java
+package com.example.labpgm2; // Your package name
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.res.Configuration; // Import Configuration
+import android.os.Bundle;
+import android.widget.TextView; // Import TextView
+
+public class MainActivity extends AppCompatActivity {
+
+    private TextView orientationDisplayText; // Declare TextView variable
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Initial setup based on the current orientation when the activity is first created.
+        // This method will determine which layout to load (activity_main.xml or activity_landscape.xml).
+        updateUiForOrientation(getResources().getConfiguration().orientation);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        
+        updateUiForOrientation(newConfig.orientation);
+    }
+
+
+    private void updateUiForOrientation(int orientation) {
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // If the device is in portrait mode, load activity_main.xml.
+            setContentView(R.layout.activity_main);
+
+            // After setting the content view, you MUST re-find your views
+            // because the old view hierarchy is replaced.
+            orientationDisplayText = findViewById(R.id.orientation_text_view1);
+
+            // Update the text view for portrait mode.
+            if (orientationDisplayText != null) {
+                orientationDisplayText.setText("You are in PORTRAIT mode!");
+            }
+
+        } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // If the device is in landscape mode, load activity_landscape.xml.
+            setContentView(R.layout.activity_landscape); // Assuming you have activity_landscape.xml
+
+            // After setting the content view, you MUST re-find your views.
+            orientationDisplayText = findViewById(R.id.orientation_text_view);
+
+            // Update the text view for landscape mode.
+            if (orientationDisplayText != null) {
+                orientationDisplayText.setText("You are in LANDSCAPE mode!");
+            }
+        }
+    }
+}
+
+#Manifest
+android:configChanges="orientation|screenSize|keyboardHidden">
+
+#activity_main.xml
+create one TextView
+
+#activity_landscape.xml
+create a TextView
+
+
+
